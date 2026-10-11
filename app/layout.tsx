@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Image Generator",
-  description: "AI Image Generator App",
+  description: "AI Image Generator App"
+
 };
 
 export default function RootLayout({
