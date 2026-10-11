@@ -18,7 +18,7 @@ export default function ImgSlider() {
 
   return (
     // 3. Wrapper div controls the size (h-64 means 256px tall)
-    <div className="h-full w-full max-w-2xl mx-auto h-64 rounded-xl overflow-hidden relative">
+    <div className="h-full w-full max-w-2xl mx-auto rounded-xl overflow-hidden relative">
       <Swiper
         // 4. Add the modules here
         modules={[Navigation, Pagination, Autoplay]}
