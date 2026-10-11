@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function NavigationBar() {
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+
+  const [openMenu, setOpenMenu] = useState<string | null>(null); // by default null
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
@@ -29,7 +31,10 @@ export default function NavigationBar() {
     "rounded-[10px] px-4 py-1.5 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-16 w-full border-b border-gray-100 bg-white/95 backdrop-blur">
+    <header
+      className="fixed inset-x-0 top-0 z-50 h-16 w-full border-b border-gray-100 bg-white/95 backdrop-blur"
+      onMouseLeave={() => setOpenMenu(null)}
+    >
 
       <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link
@@ -46,9 +51,13 @@ export default function NavigationBar() {
         <nav
           aria-label="Main navigation"
           className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 lg:flex"
-          onMouseLeave={() => setOpenMenu(null)}
         >
-          <Link href="/blog" className={navItemClass}>
+          <Link
+            href="/blog"
+            className={navItemClass}
+            onMouseEnter={() => setOpenMenu(null)}
+            onClick={() => setOpenMenu(null)}
+          >
             Blog
           </Link>
 
@@ -56,9 +65,7 @@ export default function NavigationBar() {
             <div key={name} onMouseEnter={() => setOpenMenu(name)}>
               <button
                 type="button"
-                onClick={() =>
-                  setOpenMenu(openMenu === name ? null : name)
-                }
+                onClick={() => setOpenMenu(name)}
                 className={`${navItemClass} inline-flex items-center gap-2`}
                 aria-expanded={openMenu === name}
               >
@@ -84,16 +91,32 @@ export default function NavigationBar() {
             </div>
           ))}
 
-          <Link href="/affiliate" className={navItemClass}>
+          <Link
+            href="/affiliate"
+            className={navItemClass}
+            onMouseEnter={() => setOpenMenu(null)}
+          >
             Affiliate
           </Link>
-          <Link href="/api" className={navItemClass}>
+          <Link
+            href="/api"
+            className={navItemClass}
+            onMouseEnter={() => setOpenMenu(null)}
+          >
             API
           </Link>
-          <Link href="/creators" className={navItemClass}>
+          <Link
+            href="/creators"
+            className={navItemClass}
+            onMouseEnter={() => setOpenMenu(null)}
+          >
             Creators
           </Link>
-          <Link href="/pricing" className={navItemClass}>
+          <Link
+            href="/pricing"
+            className={navItemClass}
+            onMouseEnter={() => setOpenMenu(null)}
+          >
             Pricing
           </Link>
         </nav>
@@ -140,7 +163,6 @@ export default function NavigationBar() {
       {openMenu === "Tools" && (
         <div
           onMouseEnter={() => setOpenMenu("Tools")}
-          onMouseLeave={() => setOpenMenu(null)}
           className="absolute left-0 top-full w-full border-t border-gray-100 bg-white shadow-xl"
         >
           <div className="mx-auto grid max-w-7xl grid-cols-4 gap-10 px-6 py-10">
@@ -259,7 +281,6 @@ export default function NavigationBar() {
       {openMenu === "Community" && (
         <div
           onMouseEnter={() => setOpenMenu("Community")}
-          onMouseLeave={() => setOpenMenu(null)}
           className="absolute left-0 top-full w-full border-t border-gray-100 bg-white shadow-xl"
         >
           <div className="mx-auto grid max-w-7xl grid-cols-4 gap-10 px-6 py-10">
