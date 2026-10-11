@@ -31,7 +31,7 @@ export default function Home() {
       </div>
 
       {/* Our Component 1: The Form */}
-      <PromptForm onSubmit={pic} isLoading={false} />
+      {/* <PromptForm onSubmit={pic} isLoading={false} /> */}
 
   
 
