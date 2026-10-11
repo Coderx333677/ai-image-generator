@@ -19,7 +19,7 @@ export default function NavigationBar() {
     };
   }, [mobileOpen]);
 
-  // Close drawer on Escape
+  // Close drawer on Escape if user openby ispecting mobile screen
   useEffect(() => {
     const onKey = (e: KeyboardEvent) =>
       e.key === "Escape" && setMobileOpen(false);
@@ -37,6 +37,7 @@ export default function NavigationBar() {
     >
 
       <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 sm:px-6">
+
         <Link
           href="/"
           className="flex items-center gap-3 text-xl font-bold tracking-tight text-black"
@@ -52,6 +53,8 @@ export default function NavigationBar() {
           aria-label="Main navigation"
           className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 lg:flex"
         >
+
+
           <Link
             href="/blog"
             className={navItemClass}
@@ -61,35 +64,44 @@ export default function NavigationBar() {
             Blog
           </Link>
 
-          {["Tools", "Community"].map((name) => (
-            <div key={name} onMouseEnter={() => setOpenMenu(name)}>
-              <button
-                type="button"
-                onClick={() => setOpenMenu(name)}
-                className={`${navItemClass} inline-flex items-center gap-2`}
-                aria-expanded={openMenu === name}
-              >
-                {name}
-                <span aria-hidden="true" className="text-xs">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    style={{
-                      transform:
-                        openMenu === name ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.2s ease",
-                    }}
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          ))}
+
+          {/* for tools adn community */}
+
+          {
+            ["Tools", "Community"].map((name) => (
+              <div key={name} onMouseEnter={() => setOpenMenu(name)}>
+                <button
+                  type="button"
+                  onClick={() => setOpenMenu(name)}
+                  className={`${navItemClass} inline-flex items-center gap-2`}
+                  aria-expanded={openMenu === name}
+                >
+                  
+                  
+                  {name}
+                  <span aria-hidden="true" className="text-xs">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      style={{
+                        transform:
+                          openMenu === name ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.2s ease",
+                      }}
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
+
+
+                </button>
+              </div>
+            ))
+          }
 
           <Link
             href="/affiliate"
@@ -98,6 +110,8 @@ export default function NavigationBar() {
           >
             Affiliate
           </Link>
+
+
           <Link
             href="/api"
             className={navItemClass}
@@ -105,6 +119,8 @@ export default function NavigationBar() {
           >
             API
           </Link>
+
+
           <Link
             href="/creators"
             className={navItemClass}
@@ -112,6 +128,8 @@ export default function NavigationBar() {
           >
             Creators
           </Link>
+
+
           <Link
             href="/pricing"
             className={navItemClass}
@@ -119,6 +137,8 @@ export default function NavigationBar() {
           >
             Pricing
           </Link>
+
+
         </nav>
 
         {/* ── RIGHT SIDE: Launch App + Hamburger ────────────── */}
@@ -356,7 +376,7 @@ export default function NavigationBar() {
         <div className="fixed inset-0 z-[60] lg:hidden">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/40"
+            className="fixed inset-0 bg-black/10"
             onClick={() => setMobileOpen(false)}
           />
 
