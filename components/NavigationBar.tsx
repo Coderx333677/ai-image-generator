@@ -36,7 +36,7 @@ export default function NavigationBar() {
       onMouseLeave={() => setOpenMenu(null)}
     >
 
-      <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-6">
 
         <Link
           href="/"
