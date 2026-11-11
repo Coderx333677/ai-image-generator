@@ -65,11 +65,12 @@ export default function NavigationBar() {
           </Link>
 
 
-          {/* for tools adn community */}
+          {/* for tools and community */}
 
           {
             ["Tools", "Community"].map((name) => (
               <div key={name} onMouseEnter={() => setOpenMenu(name)}>
+
                 <button
                   type="button"
                   onClick={() => setOpenMenu(name)}
@@ -97,7 +98,6 @@ export default function NavigationBar() {
                     </svg>
                   </span>
 
-
                 </button>
               </div>
             ))
@@ -110,7 +110,6 @@ export default function NavigationBar() {
           >
             Affiliate
           </Link>
-
 
           <Link
             href="/api"

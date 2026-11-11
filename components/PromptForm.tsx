@@ -25,6 +25,16 @@ export default function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
     onSubmit(trimmedPrompt);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // Prevents adding an unwanted new line line-break
+      const trimmedPrompt = prompt.trim();
+      if (trimmedPrompt && !isLoading) {
+        onSubmit(trimmedPrompt);
+      }
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -54,6 +64,7 @@ export default function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
                     id="prompt"
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     rows={5}
                     placeholder="Describe the image you want to create..."
                     disabled={isLoading}
@@ -70,6 +81,7 @@ export default function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
 
                     <button
                     type="submit"
+                    
                     disabled={isLoading || !prompt.trim()}
                     // CHANGED: Made button slightly larger
                     className="rounded-full bg-linear-to-r from-purple-600 to-orange-500 px-8 py-4 text-lg font-semibold text-white shadow-md transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
